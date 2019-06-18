@@ -10,3 +10,17 @@ go run . ~/some/terragrunt/file/terraform.tfvars ~/some/other/terragrunt/file/te
 	- change any incompatible usages of attributes/blocks
 	- rename changed functions
 - doesn't handle the terragrunt block not being the first block (would be pretty easy to fix)
+- free floating comments aren't preserved (can likely be fixed with some effort) ie.
+
+```
+# this is fine
+foo = "bar"
+
+# this comment will be deleted!
+
+# fine
+baz = {
+	# fine
+	foo = "bar",
+}
+```
